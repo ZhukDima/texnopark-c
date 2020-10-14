@@ -1,7 +1,5 @@
 name: 'All tests'
-on:
-  push:
-  pull-request:
+on: [pull_request, push]
 
 jobs:
   google-test:
