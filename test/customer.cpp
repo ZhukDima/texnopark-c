@@ -10,5 +10,4 @@ TEST(customer, ok) {
 
 TEST(testy, not_ok) {
   ASSERT_EQ(customer_check(0), 0);  
-  ASSERT_EQ(customer_check(0), 1);  
 }
