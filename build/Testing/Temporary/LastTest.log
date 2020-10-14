@@ -1,0 +1,61 @@
+Start testing: Oct 14 21:13 MSK
+----------------------------------------------------------
+1/2 Testing: arithmeticProgInArray
+1/2 Test: arithmeticProgInArray
+Command: "/home/user/texnopark/build/test/arithmeticProgInArray_tests"
+Directory: /home/user/texnopark/build/test
+"arithmeticProgInArray" start time: Oct 14 21:13 MSK
+Output:
+----------------------------------------------------------
+[==========] Running 4 tests from 4 test cases.
+[----------] Global test environment set-up.
+[----------] 1 test from arithmeticalProgInArray
+[ RUN      ] arithmeticalProgInArray.ok
+[       OK ] arithmeticalProgInArray.ok (0 ms)
+[----------] 1 test from arithmeticalProgInArray (0 ms total)
+
+[----------] 1 test from nagativeSizeInArray
+[ RUN      ] nagativeSizeInArray.fault
+[       OK ] nagativeSizeInArray.fault (17 ms)
+[----------] 1 test from nagativeSizeInArray (17 ms total)
+
+[----------] 1 test from allArrayIsProgressive
+[ RUN      ] allArrayIsProgressive.all
+[       OK ] allArrayIsProgressive.all (0 ms)
+[----------] 1 test from allArrayIsProgressive (0 ms total)
+
+[----------] 1 test from twoElementsInArray
+[ RUN      ] twoElementsInArray.two
+[       OK ] twoElementsInArray.two (0 ms)
+[----------] 1 test from twoElementsInArray (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 4 test cases ran. (18 ms total)
+[  PASSED  ] 4 tests.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"arithmeticProgInArray" end time: Oct 14 21:13 MSK
+"arithmeticProgInArray" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: customer
+2/2 Test: customer
+Command: "/home/user/texnopark/build/test/customer_tests"
+Directory: /home/user/texnopark/build/test
+"customer" start time: Oct 14 21:13 MSK
+Output:
+----------------------------------------------------------
+[==========] Running 0 tests from 0 test cases.
+[==========] 0 tests from 0 test cases ran. (0 ms total)
+[  PASSED  ] 0 tests.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"customer" end time: Oct 14 21:13 MSK
+"customer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 14 21:13 MSK

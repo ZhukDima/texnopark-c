@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/testy.dir/src/arithmeticProgInArray.c.o CMakeFiles/testy.dir/src/customer.c.o CMakeFiles/testy.dir/src/main.c.o  -o testy 

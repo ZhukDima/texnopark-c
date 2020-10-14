@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/testy/arithmeticProgInArray.h
+
+../include/testy/customer.h
+
+/home/user/texnopark/src/main.c
+testy/customer.h
+/home/user/texnopark/src/testy/customer.h
+testy/arithmeticProgInArray.h
+/home/user/texnopark/src/testy/arithmeticProgInArray.h
+stdio.h
+-
+
