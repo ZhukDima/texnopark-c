@@ -1,4 +1,0 @@
-customer 2 0.0109
-widget 1 0.0480292
-arithmeticProgInArray 1 0.0547552
----
