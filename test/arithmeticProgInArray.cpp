@@ -14,7 +14,20 @@ TEST(arithmeticalProgInArray, ok) {
 	{
 		arr[i] = arr2[i];
 	}
-    ASSERT_EQ(arithmeticProgInArray(arr, dist, size), 6);
+	int dist_size = arithmeticProgInArray(arr, &dist, size);
+    ASSERT_EQ(dist_size, 6);
+	EXPECT_EQ(dist, arr + 4);
+	for (int i = 0; i < dist_size; i++)
+	{
+		ASSERT_EQ(dist[i], arr[i + 4]);
+	}
+	
+	int delta = dist[1] - dist[0];
+	for (int i = 1; i < dist_size; i++)
+	{
+		delta = dist[i] - dist[i - 1]; 
+	}
+	EXPECT_EQ(delta, dist[1] - dist[0]);
     delete[] arr;
 }
 
@@ -28,7 +41,7 @@ TEST(nagativeSizeInArray, fault) {
 	{
 		arr[i] = arr2[i];
 	}
-    ASSERT_DEATH(arithmeticProgInArray(arr, dist, -3), "size > 0");
+    ASSERT_DEATH(arithmeticProgInArray(arr, &dist, -3), "size > 0");
     delete[] arr;
 }
 
@@ -41,7 +54,20 @@ TEST(allArrayIsProgressive, all) {
 	{
 		arr[i] = i;
 	}
-    ASSERT_EQ(arithmeticProgInArray(arr, dist, size), size);
+	int dist_size = arithmeticProgInArray(arr, &dist, size);
+    ASSERT_EQ(dist_size, size);
+	EXPECT_EQ(dist, arr);
+	for (int i = 0; i < dist_size; i++)
+	{
+		ASSERT_EQ(dist[i], arr[i]);
+	}
+	
+	int delta = dist[1] - dist[0];
+	for (int i = 1; i < dist_size; i++)
+	{
+		delta = dist[i] - dist[i - 1]; 
+	}
+	EXPECT_EQ(delta, dist[1] - dist[0]);
     delete[] arr;
 }
 
@@ -55,6 +81,19 @@ TEST(twoElementsInArray, two) {
 	{
 		arr[i] = arr2[i];
 	}
-    ASSERT_EQ(arithmeticProgInArray(arr, dist, size), size);
+	int dist_size = arithmeticProgInArray(arr, &dist, size);
+    ASSERT_EQ(dist_size, size);
+	EXPECT_EQ(dist, arr);
+	for (int i = 0; i < dist_size; i++)
+	{
+		ASSERT_EQ(dist[i], arr[i]);
+	}
+	
+	int delta = dist[1] - dist[0];
+	for (int i = 1; i < dist_size; i++)
+	{
+		delta = dist[i] - dist[i - 1]; 
+	}
+	EXPECT_EQ(delta, dist[1] - dist[0]);
     delete[] arr;
 }

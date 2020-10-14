@@ -7,19 +7,19 @@ int widget_ok(int a, int b) {
   return a + b == private_ok_value;
 }
 
-int arithmeticProgInArray(int* source, int* dist, int size)
+int arithmeticProgInArray(int* source, int** dist, int size)
 {
 	assert(size > 0);
 	if (size == 2)
 	{
-		dist = source;
+		(*dist) = source;
 		return 2;
 	}
 	
 	int delta = source[1] - source[0];
 	int subSize = 0;
 	int tmpSize = 2;
-	dist = source;
+	(*dist) = source;
 	for (int i = 2; i < size; ++i) {
 		if (delta == (source[i] - source[i - 1]))
 		{
@@ -28,7 +28,7 @@ int arithmeticProgInArray(int* source, int* dist, int size)
 		else if (tmpSize > subSize)
 		{
 			subSize = tmpSize;
-			dist = source + i - subSize;
+			(*dist) = source + i - subSize;
 			delta = source[i] - source[i - 1];
 			tmpSize = 2;
 		}
@@ -41,7 +41,7 @@ int arithmeticProgInArray(int* source, int* dist, int size)
 	if (tmpSize > subSize)
 	{
 		subSize = tmpSize;
-		dist = source + size - subSize;
+		(*dist) = source + size - subSize;
 	}
 	return subSize;
 }
