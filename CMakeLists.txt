@@ -29,4 +29,4 @@ file(GLOB sources
   "${PROJECT_SOURCE_DIR}/include/testy/*.h"
   "${PROJECT_SOURCE_DIR}/src/*.c")
 
-add_executable(testy ${sources})
+add_executable(main ${sources})
