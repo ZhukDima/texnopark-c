@@ -8,4 +8,5 @@ jobs:
       - uses: actions/checkout@v2
       - run: cmake . 
       - run: make
-      - run: test/customer_tests
+      - run: ctest
+      - run: test/muscompos_tests

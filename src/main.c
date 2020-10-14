@@ -1,10 +1,11 @@
-#include "testy/customer.h"
-#include "testy/widget.h"
+#include <stdio.h>
+
+#include "muscompos.h"
 
 int main() {
-  if (widget_ok(1, 1)) {
-    return customer_check(5);
-  }
+  int a;
+  scanf("%d", &a);
+  printf("2 * a = %d\n", a * 2);
 
   return 0;
 }
