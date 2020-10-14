@@ -40,7 +40,7 @@ int randMusicArray(struct MusCompos** in_musCompos,
   }
 
   // создание "случайной" подборки
-  int size_out = rand() % size_correct_ind + 1;
+  int size_out = size_correct_ind; //rand() % size_correct_ind + 1;
   *out_musCompos = malloc(sizeof(struct MusCompos*) * size_out);
   for (int i = 0; i < size_out; i++)
     (*out_musCompos)[i] = in_musCompos[correct_ind[i]];

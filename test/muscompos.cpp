@@ -25,10 +25,10 @@ const int count_test = 1000;
 
 TEST(testy, ok) {
   struct MusCompos** in_arr = new struct MusCompos*[size_in];
-  const char* allName[size_in] = {"Белые розы", 
-  "Фаина-Фаина", "Влидимирский централ", "Костёр", 
-  "Выпьем за любовь", "Императрица", "Милион алых роз", 
-  "Пачка сигарет", "Группа крови", "Перемен"};
+  const char* allName[size_in] = {"Белые_розы", 
+  "фАина-фаИна", "Влидимирский_централ", "Костёр", 
+  "Выпьем_за_любовь", "Императрица", "Милион_алых_роз", 
+  "Пачка_сигарет", "Группа_крови", "Перемен"};
 
   int allDuration[size_in] = {240, 
   245, 250, 230, 
@@ -64,7 +64,7 @@ TEST(testy, ok) {
     all_size_out += size_out;
     free(out_arr);
   }
-  // std::cout << 1.0 * all_size_out / count_test << std::endl; => при 1000: 1,701
+  std::cout << 1.0 * all_size_out / count_test << std::endl; // => при 1000: 1,701
   ASSERT_TRUE(all_size_out > count_test * 1);
 
   for (int i = 0; i < size_in; i++)
