@@ -27,7 +27,7 @@ gboolean g_tree_elem_calc_unic_word(gpointer key, gpointer value, gpointer tree_
         (*p)++;
     else
     {
-        char *copy_key = malloc(sizeof(char) * (strlen((char *)key)));
+        char *copy_key = malloc(sizeof(char) * (strlen((char *)key) + 1));
         strcpy(copy_key, key);
         int *new_data = malloc(sizeof(int));
         *new_data = 1;
@@ -128,14 +128,13 @@ struct TFIDFData **findTFIDFMetric(const char *pathToDir)
         arrTFIDFData[i]->tree = g_tree_calc_TFIDF_metric(arrIFData[i], tree_unic_word, numFile);
     }
 
-    // for (int i = 0; i < numFile; i++) {
-    //     printf("\n%s %d\n", arrIFData[i]->fileName, arrIFData[i]->numWords);
-    //     g_tree_print(arrIFData[i]->tree);
+    for (int i = 0; i < numFile; i++) {
+        // printf("\n%s %d\n", arrIFData[i]->fileName, arrIFData[i]->numWords);
+        // g_tree_print(arrIFData[i]->tree);
 
-    //     free(arrIFData[i]->fileName);
-    //     g_tree_destroy(arrIFData[i]->tree);
-    // }
-    // free(arrIFData);
+        g_tree_destroy(arrIFData[i]->tree);
+    }
+    free(arrIFData);
 
     return arrTFIDFData;
 }

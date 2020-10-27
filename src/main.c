@@ -11,6 +11,10 @@ int main(int argc, char *argv[])
     {
         printf("\n%s\n", arr[i]->fileName);
         g_tree_print_sf(arr[i]->tree);
+        
+        free(arr[i]->fileName);
+        g_tree_destroy(arr[i]->tree);
     }
+    free(arr);
     return 0;
 }
