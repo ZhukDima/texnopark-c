@@ -1,31 +1,16 @@
-#include <sys/types.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <sys/wait.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/sysinfo.h>
+#include "testy/TF-IDFMetric.h"
+#include <assert.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    char pid[255];
-    printf("%d\n", get_nprocs_conf());
-    int s = 0;
-    int a = fork();
-    s += a == 0;
-    int b = fork();
-    s += b == 0;
-    int c = fork();
-    s += c == 0;
-    sprintf(pid, "PID : %6d %6d %6d %6d %6d\n", getpid(), a, b, c, s);
-    int id;
-    if (a != 0) usleep(100);
-    if (b != 0) usleep(100);
-    if (c != 0) usleep(100);
-    waitpid(a, &id, 0);
-    // waitpid(b, &id, 0);
-    // waitpid(c, &id, 0);
-    write(STDOUT_FILENO, pid, strlen(pid));
+    printf("%d %s\n", argc, argv[0]);
+    assert(argc == 2);
+    struct TFIDFData **arr = findTFIDFMetric(argv[1]);
+    for (int i = 0; arr[i] != NULL; i++)
+    {
+        printf("\n%s\n", arr[i]->fileName);
+        g_tree_print_sf(arr[i]->tree);
+    }
     return 0;
 }

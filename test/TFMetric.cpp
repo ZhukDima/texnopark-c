@@ -9,56 +9,6 @@ extern "C"
 //All right
 TEST(findTFMetric1, ok)
 {
-    // GTree *tree;
-    // tree = findTFMetric("../../test/testFiles/test1.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test2.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test3.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test4.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test5.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test6.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test7.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test8.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test9.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
-
-    // tree = findTFMetric("../../test/testFiles/test10.txt");
-    // g_tree_print(tree);
-    // g_tree_destroy(tree);
-    // printf("\n");
     char pathToDir[100] = "../../test/testFiles";
     int lenPath = strlen(pathToDir);
 
