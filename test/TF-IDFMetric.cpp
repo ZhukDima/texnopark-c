@@ -11,13 +11,18 @@ extern "C"
 TEST(findTFIDFMetric1, ok)
 {
     char pathToDir[100] = "../../test/testFiles";
-    TFIDFData **arr = findTFIDFMetric(pathToDir);
+    WordTFIDF **arr = topFiveTFIDFMetric(pathToDir);
     for (int i = 0; arr[i] != NULL; i++) {
         printf("\n%s\n", arr[i]->fileName);
-        g_tree_print_sf(arr[i]->tree);
-
+        for (int j = 0; j < 5; j++) {
+            printf("[%Lf, %s]\n", arr[i]->arrIFIDF[j], arr[i]->arrWords[j]);
+            free(arr[i]->arrWords[j]);
+        }
+        
+        free(arr[i]->arrWords);
+        free(arr[i]->arrIFIDF);
         free(arr[i]->fileName);
-        g_tree_destroy(arr[i]->tree);
+        free(arr[i]);
     }
     free(arr);
 }

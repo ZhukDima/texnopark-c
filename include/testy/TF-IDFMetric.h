@@ -5,6 +5,8 @@
 #include "testy/TFMetric.h"
 #include <stdio.h>
 
+#define ld long double
+
 struct TFIDFData {
     char* fileName;
     GTree *tree;
@@ -25,5 +27,13 @@ gboolean g_tree_elem_calc_TFIDF_metric(gpointer key, gpointer value, gpointer da
 GTree *g_tree_calc_TFIDF_metric(struct TFData *tf_data, GTree *tree_unic_word, int numFile);
 
 struct TFIDFData **findTFIDFMetric(const char *pathToDir);
+
+struct WordTFIDF {
+    char* fileName;
+    char** arrWords;
+    ld* arrIFIDF;
+};
+
+struct WordTFIDF ** topFiveTFIDFMetric(const char *pathToDir);
 
 #endif

@@ -7,8 +7,6 @@
 #include <dirent.h>
 #include <math.h>
 
-#define ld long double
-
 gboolean g_tree_elem_print_sf(gpointer key, gpointer value, gpointer data)
 {
     printf("Key: %15s\t Value: %Lf\n", (char *)key, *(ld *)value);
@@ -60,8 +58,7 @@ gboolean g_tree_elem_calc_TFIDF_metric(gpointer key, gpointer value, gpointer da
     strcpy(new_key, key);
     ld *new_data = malloc(sizeof(ld));
     *new_data = (ld) * (int *)value / ((struct SpecialData *)data)->tf_data->numWords;
-    *new_data *= 100*log10l((ld)((struct SpecialData *)data)->numFile 
-        / *(int *)g_tree_lookup(((struct SpecialData *)data)->tree_unic_word, key));
+    *new_data *= 100 * log10l((ld)((struct SpecialData *)data)->numFile / *(int *)g_tree_lookup(((struct SpecialData *)data)->tree_unic_word, key));
     g_tree_insert(((struct SpecialData *)data)->tree_TFIDF, new_key, new_data);
     return FALSE;
 }
@@ -128,7 +125,8 @@ struct TFIDFData **findTFIDFMetric(const char *pathToDir)
         arrTFIDFData[i]->tree = g_tree_calc_TFIDF_metric(arrIFData[i], tree_unic_word, numFile);
     }
 
-    for (int i = 0; i < numFile; i++) {
+    for (int i = 0; i < numFile; i++)
+    {
         // printf("\n%s %d\n", arrIFData[i]->fileName, arrIFData[i]->numWords);
         // g_tree_print(arrIFData[i]->tree);
 
@@ -137,4 +135,51 @@ struct TFIDFData **findTFIDFMetric(const char *pathToDir)
     free(arrIFData);
 
     return arrTFIDFData;
+}
+
+gboolean g_tree_elem_topFiveTFIDFMetric(gpointer key, gpointer value, gpointer data)
+{
+    struct WordTFIDF *ans_i = (struct WordTFIDF *)data;
+    if (*(ld*)value > ans_i->arrIFIDF[4])
+    {
+        free(ans_i->arrWords[4]);
+        ans_i->arrWords[4] = malloc(sizeof(char) * (strlen((char *)key) + 1));
+        strcpy(ans_i->arrWords[4], (char *)key);
+        ans_i->arrIFIDF[4] = *(ld*)value;
+        for (int i = 4; i > 0 && ans_i->arrIFIDF[i - 1] < ans_i->arrIFIDF[i]; i--)
+        {
+            ld buf_ld = ans_i->arrIFIDF[i - 1];
+            ans_i->arrIFIDF[i - 1] = ans_i->arrIFIDF[i];
+            ans_i->arrIFIDF[i] = buf_ld;
+            char *buf_str = ans_i->arrWords[i - 1];
+            ans_i->arrWords[i - 1] = ans_i->arrWords[i];
+            ans_i->arrWords[i] = buf_str;
+        }
+    }
+    return FALSE;
+}
+
+struct WordTFIDF **topFiveTFIDFMetric(const char *pathToDir)
+{
+    struct TFIDFData **arr = findTFIDFMetric(pathToDir);
+    int size = 0;
+    while (arr[size] != NULL)
+        size++;
+
+    struct WordTFIDF **ans = malloc(sizeof(struct WordTFIDF *) * (size + 1));
+    for (int i = 0; i < size; i++)
+    {
+        ans[i] = malloc(sizeof(struct WordTFIDF));
+        ans[i]->fileName = arr[i]->fileName;
+        ans[i]->arrWords = malloc(sizeof(char *) * 5);
+        for (int j = 0; j < 5; j++)
+            ans[i]->arrWords[j] = malloc(sizeof(char));
+        ans[i]->arrIFIDF = malloc(sizeof(ld) * 5);
+        for (int j = 0; j < 5; j++)
+            ans[i]->arrIFIDF[j] = 0;
+        g_tree_foreach(arr[i]->tree, g_tree_elem_topFiveTFIDFMetric, ans[i]);
+
+        g_tree_destroy(arr[i]->tree);
+    }
+    return ans;
 }
