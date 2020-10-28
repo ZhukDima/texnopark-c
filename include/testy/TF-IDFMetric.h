@@ -7,14 +7,11 @@
 
 #define ld long double
 
-struct TFIDFData {
-    char* fileName;
+struct TFIDFData
+{
+    char *fileName;
     GTree *tree;
 };
-
-gboolean g_tree_elem_print_sf(gpointer key, gpointer value, gpointer data);
-
-void g_tree_print_sf(GTree *tree);
 
 gboolean g_tree_elem_calc_unic_word(gpointer key, gpointer value, gpointer tree_unic_word);
 
@@ -28,12 +25,15 @@ GTree *g_tree_calc_TFIDF_metric(struct TFData *tf_data, GTree *tree_unic_word, i
 
 struct TFIDFData **findTFIDFMetric(const char *pathToDir);
 
-struct WordTFIDF {
-    char* fileName;
-    char** arrWords;
-    ld* arrIFIDF;
+struct WordTFIDF
+{
+    char *fileName;
+    char **arrWords;
+    ld *arrIFIDF;
 };
 
-struct WordTFIDF ** topFiveTFIDFMetric(const char *pathToDir);
+struct WordTFIDF **findTopFiveTFIDFMetric(const char *pathToDir);
+
+void printTopFiveTFIDFMetric(const char *pathToDir);
 
 #endif

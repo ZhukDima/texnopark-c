@@ -4,8 +4,8 @@ project(TryCI VERSION 1.0
         DESCRIPTION "I need to make coverage and valgrind"
         LANGUAGES C CXX)
 
-string(APPEND CMAKE_C_FLAGS " -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include")
-string(APPEND CMAKE_CXX_FLAGS " -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include")
+string(APPEND CMAKE_C_FLAGS "  -Wall -Werror -Wpedantic -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include")
+string(APPEND CMAKE_CXX_FLAGS "  -Wall -Werror -Wpedantic -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include")
 string(APPEND CMAKE_C_LINK_EXECUTABLE " -lglib-2.0 -lm")
 string(APPEND CMAKE_CXX_LINK_EXECUTABLE " -lglib-2.0 -lm")
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)

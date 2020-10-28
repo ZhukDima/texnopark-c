@@ -7,17 +7,6 @@
 #include <dirent.h>
 #include <math.h>
 
-gboolean g_tree_elem_print_sf(gpointer key, gpointer value, gpointer data)
-{
-    printf("Key: %15s\t Value: %Lf\n", (char *)key, *(ld *)value);
-    return FALSE;
-}
-
-void g_tree_print_sf(GTree *tree)
-{
-    g_tree_foreach(tree, g_tree_elem_print_sf, NULL);
-}
-
 gboolean g_tree_elem_calc_unic_word(gpointer key, gpointer value, gpointer tree_unic_word)
 {
     int *p;
@@ -159,7 +148,7 @@ gboolean g_tree_elem_topFiveTFIDFMetric(gpointer key, gpointer value, gpointer d
     return FALSE;
 }
 
-struct WordTFIDF **topFiveTFIDFMetric(const char *pathToDir)
+struct WordTFIDF **findTopFiveTFIDFMetric(const char *pathToDir)
 {
     struct TFIDFData **arr = findTFIDFMetric(pathToDir);
     int size = 0;
@@ -182,4 +171,21 @@ struct WordTFIDF **topFiveTFIDFMetric(const char *pathToDir)
         g_tree_destroy(arr[i]->tree);
     }
     return ans;
+}
+
+void printTopFiveTFIDFMetric(const char *pathToDir) {
+    struct WordTFIDF **arr = findTopFiveTFIDFMetric(pathToDir);
+    for (int i = 0; arr[i] != NULL; i++) {
+        printf("\n%s\n", arr[i]->fileName);
+        for (int j = 0; j < 5; j++) {
+            printf("[%Lf, %s]\n", arr[i]->arrIFIDF[j], arr[i]->arrWords[j]);
+            free(arr[i]->arrWords[j]);
+        }
+        
+        free(arr[i]->arrWords);
+        free(arr[i]->arrIFIDF);
+        free(arr[i]->fileName);
+        free(arr[i]);
+    }
+    free(arr);
 }

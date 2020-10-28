@@ -21,7 +21,7 @@ jobs:
       - name: Make
         run: cd build && cmake .. && make
       - name: UnitTests
-        run: cd build && ctest -V
+        run: cd build && ctest -VV
       - name: Valgrind | Coverage
         run: cd build && make coverage
       - name: Archive code coverage results
