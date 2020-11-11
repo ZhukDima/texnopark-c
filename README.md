@@ -1,2 +1,2 @@
-# texnopark-c
-Participants: Zhuk Dmitry, Khizhnyakov Vadim, Prokhorov Anton, Egorov Alexey
+# Tree Plus One
+Алексей Егоров, Прохоров Антон, Хижняков Вадим, Жук Дмитрий
